@@ -5,24 +5,25 @@ using UnityEngine;
 public class MoveCommand : CharacterCommand
 {
     // Positive = right, Negative = left 
-    int direction;
+    int moveDirection;
 
-    public MoveCommand(CharacterControl cc, int direction)
+    public MoveCommand(int direction)
     {
-        this.controller = cc;
-
         if (direction > 0) {
-            direction = 1;
+            // Moving Right
+            moveDirection = 1;
         } else if (direction < 0)
         {
-            direction = -1;
+            // Moving Left
+            moveDirection = -1;
         } else {
-            Debug.Log("MoveCommand Argument Cannot be Zero.");
+            // Stoping Movement
+            moveDirection = 0;
         }
     }
 
-    public override void Execute()
+    public override void Execute(CharacterControl controller)
     {
-        controller.SetMoveDirection(direction);
+        controller.SetMoveDirection(moveDirection);
     }
 }

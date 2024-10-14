@@ -4,6 +4,5 @@ using UnityEngine;
 
 public abstract class CharacterCommand
 {
-   protected CharacterControl controller;
-   public abstract void Execute();
+   public abstract void Execute(CharacterControl c);
 }
