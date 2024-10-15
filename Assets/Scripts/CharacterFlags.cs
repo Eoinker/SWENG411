@@ -12,7 +12,7 @@ public class CharacterFlags : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateGrounded();
     }
 
 
