@@ -83,13 +83,11 @@ public class CharacterControl : MonoBehaviour
 
     private void ResumeExecution()
     {
-        Debug.Log("Resume");
         isExecuting = true;
     }
 
     private void PauseExecution()
     {
-        Debug.Log("Pause");
         isExecuting = false;
     }   
 
