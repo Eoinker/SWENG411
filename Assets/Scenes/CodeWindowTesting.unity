@@ -335,6 +335,8 @@ GameObject:
   m_Component:
   - component: {fileID: 782331937}
   - component: {fileID: 782331936}
+  - component: {fileID: 782331939}
+  - component: {fileID: 782331938}
   m_Layer: 5
   m_Name: LevelUI
   m_TagString: Untagged
@@ -356,7 +358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: 9a7e7795e682595499bf94a18c5e4e79, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: d3c8b0ad4f0111d4093993a0f270e6db, type: 3}
   m_SortingOrder: 0
 --- !u!4 &782331937
 Transform:
@@ -373,6 +375,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &782331938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782331935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c6ebefed5667147a85cc28276740b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &782331939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782331935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4437f32e66b861943ae06edd157ee1c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1562379318
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,10 +665,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.25
-    y: 0.025
-    width: 0.75
-    height: 0.95
+    x: 0
+    y: 0
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
