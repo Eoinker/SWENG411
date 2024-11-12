@@ -42,6 +42,8 @@ public class CodeParser : MonoBehaviour
             throw new InvalidLineException();
         }
 
+        // force all letters to lowercase
+
         string[] split = line.Split(' ');
         string firstWord = split[0];
 
@@ -53,14 +55,12 @@ public class CodeParser : MonoBehaviour
                 } catch (InvalidLineException e) {
                     throw new InvalidLineException();
                 }
-                break;
             case "wait":
                 try {
                     return ParseWaitCommand(split);
                 } catch (InvalidLineException e) {
                     throw new InvalidLineException();
                 }
-                break;
             case "jump":
                 return new JumpCommand();
                 // try {
@@ -68,7 +68,6 @@ public class CodeParser : MonoBehaviour
                 // } catch (InvalidLineException e) {
                 //     throw new InvalidLineException();
                 // }
-                break;
             default:
                 throw new InvalidLineException();
         }
@@ -85,15 +84,15 @@ public class CodeParser : MonoBehaviour
         // Checking what the second word of the command is
         switch (splitLine[1])
         {
+            case "r":
             case "right":
                 return new MoveCommand(1);
-                break;
+            case "l":
             case "left":
                 return new MoveCommand(-1);
-                break;
+            case "s":
             case "stop":
                 return new MoveCommand(0);
-                break;
             default:
                 throw new InvalidLineException();
         }
