@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+// using System.Collections;
+// using System.Collections.Generic;
+// using UnityEngine;
+// using UnityEngine.UIElements;
 
-public class CodeCompiler : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+// public class CodeCompiler : MonoBehaviour
+// {
+//     private UIDocument doc;
+//     private Button compileButton;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
+//     void Awake()
+//     {
+//         doc = GetComponent<UIDocument>();
+//         compileButton = doc.Q<Button>("Compile Button");
+//     }
+
+    
+// }
