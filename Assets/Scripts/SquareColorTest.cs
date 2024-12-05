@@ -25,5 +25,6 @@ public class SquareColorTest : MonoBehaviour
         } else {
             delay -= Time.deltaTime;
         }
+        
     }
 }
