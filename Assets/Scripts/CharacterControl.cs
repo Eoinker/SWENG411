@@ -9,6 +9,7 @@ public class CharacterControl : MonoBehaviour
     public float maxMoveSpeed;
     [Header("Jump")]
     public float jumpStrength;
+    public bool isGrounded;
 
     private bool isExecuting;
     private const float MOVE_ADJUSTEMENT = 1000f;

@@ -7,6 +7,7 @@ public class CodeParser : MonoBehaviour
 {
     public List<string> script;
     public CharacterCommandManager ccm;
+    public int currentLine;
 
     public void Start()
     {
@@ -16,12 +17,12 @@ public class CodeParser : MonoBehaviour
     public Queue<CharacterCommand> ConvertScriptToCommandQueue()
     {
         Queue<CharacterCommand> commands = new Queue<CharacterCommand>();
-
-        foreach (string line in script)
+        
+        while (currentLine < script.Count)
         {
             CharacterCommand lineCommand;
             try {
-                lineCommand = ConvertLineToCommand(line);
+                lineCommand = ConvertLineToCommand(script[currentLine]);
             } catch (InvalidLineException e)
             {
                 Debug.LogException(e);
@@ -29,6 +30,7 @@ public class CodeParser : MonoBehaviour
             }
 
             commands.Enqueue(lineCommand);
+            currentLine++;
         }
 
         return commands;
@@ -68,6 +70,8 @@ public class CodeParser : MonoBehaviour
                 // } catch (InvalidLineException e) {
                 //     throw new InvalidLineException();
                 // }
+            case "if":
+                return ParseIfCommand(split);
             default:
                 throw new InvalidLineException();
         }
@@ -106,7 +110,7 @@ public class CodeParser : MonoBehaviour
             return new WaitForFramesCommand(1);
         }
 
-        // attempt to convert second word into a float value
+        // attempt to convert second string into a float value
         float seconds = 0;
         try {
             seconds = float.Parse(splitLine[1]);
@@ -120,7 +124,36 @@ public class CodeParser : MonoBehaviour
 
     private CharacterCommand ParseJumpCommand(string[] splitLine)
     {
-        // do this later
         return new JumpCommand();
+    }
+
+    private CharacterCommand ParseIfCommand(string[] slitLine)
+    {
+        // Checking what the second word of the command is
+        return new IfCommand();
+        
+    }
+
+
+
+    private Conditional ParseConditional(string[] strings)
+    {
+        switch (strings[1])
+        {
+            case "grounded":
+                return new PlayerGroundedConditional(true);
+            case "!grounded":
+                return new PlayerGroundedConditional(false);
+            case "x":
+            case "horizontal":
+                return new PlayerXConditional();
+            case "y":
+            case "vertical":
+                return new PlayerYConditional();
+            case "time":
+                return new SimulationTimeConditional(0);
+            default:
+                throw new InvalidLineException();
+        }
     }
 }

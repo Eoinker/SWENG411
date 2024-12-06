@@ -22,8 +22,8 @@ public class MoveCommand : CharacterCommand
         }
     }
 
-    public override void Execute(CharacterControl controller)
+    public override void Execute(CharacterCommandManager ccm)
     {
-        controller.SetMoveDirection(moveDirection);
+        ccm.controller.SetMoveDirection(moveDirection);
     }
 }

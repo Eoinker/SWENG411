@@ -9,8 +9,8 @@ public class JumpCommand : CharacterCommand
 
     }
 
-    public override void Execute(CharacterControl controller)
+    public override void Execute(CharacterCommandManager ccm)
     {
-        controller.TryJump();
+        ccm.controller.TryJump();
     }
 }

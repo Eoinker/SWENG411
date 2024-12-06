@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CharacterCommandManager : MonoBehaviour
 {
-    private CharacterControl controller;
+    public CharacterControl controller;
     public Queue<CharacterCommand> commands;
+    private Stack<CharacterCommand> runtimeStack;
 
     void Awake()
     {
@@ -35,10 +36,22 @@ public class CharacterCommandManager : MonoBehaviour
 
     void Update()
     {
-        while (commands.Count > 0 && controller.IsExecuting())
+        while (controller.IsExecuting())
         {
-            CharacterCommand command = commands.Dequeue();
-            command.Execute(controller);
+            if (runtimeStack.Count > 0)
+            {
+                CharacterCommand command = runtimeStack.Pop();
+            }
+            else if (commands.Count > 0)
+            {
+                CharacterCommand command = commands.Dequeue();
+                command.Execute(this);
+            }
         }
+    }
+
+    public void PushToRuntimeStack(CharacterCommand command)
+    {
+        runtimeStack.Push(command);
     }
 }

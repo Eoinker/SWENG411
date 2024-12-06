@@ -11,9 +11,9 @@ public class WaitForFramesCommand : CharacterCommand
         this.frames = frames;
     }
 
-    public override void Execute(CharacterControl controller)
+    public override void Execute(CharacterCommandManager ccm)
     {
-        IEnumerator coroutine = controller.PauseExecutionForFrames(frames);
-        controller.StartCoroutine(coroutine);
+        IEnumerator coroutine = ccm.controller.PauseExecutionForFrames(frames);
+        ccm.controller.StartCoroutine(coroutine);
     }
 }

@@ -11,9 +11,9 @@ public class WaitForSecondsCommand : CharacterCommand
         this.delay = seconds;
     }
 
-    public override void Execute(CharacterControl controller)
+    public override void Execute(CharacterCommandManager ccm)
     {
-        IEnumerator coroutine = controller.PauseExecutionForSeconds(delay);
-        controller.StartCoroutine(coroutine);
+        IEnumerator coroutine = ccm.controller.PauseExecutionForSeconds(delay);
+        ccm.controller.StartCoroutine(coroutine);
     }
 }
