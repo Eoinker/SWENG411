@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class CodeParser : MonoBehaviour
     public void Start()
     {
         ccm.commands = ConvertScriptToCommandQueue();
+        ccm.controller.BeginExecution();
     }
 
     public Queue<CharacterCommand> ConvertScriptToCommandQueue()
@@ -26,7 +28,9 @@ public class CodeParser : MonoBehaviour
             } catch (InvalidLineException e)
             {
                 Debug.LogException(e);
-                continue;
+                Debug.Break();
+                return new Queue<CharacterCommand>();
+                // return whatever commands have been converted so far
             }
 
             commands.Enqueue(lineCommand);
@@ -47,9 +51,8 @@ public class CodeParser : MonoBehaviour
         // force all letters to lowercase
 
         string[] split = line.Split(' ');
-        string firstWord = split[0];
 
-        switch (firstWord)
+        switch (split[0])
         {
             case "move":
                 try {
@@ -127,31 +130,146 @@ public class CodeParser : MonoBehaviour
         return new JumpCommand();
     }
 
-    private CharacterCommand ParseIfCommand(string[] slitLine)
+    private CharacterCommand ParseIfCommand(string[] splitLine)
     {
-        // Checking what the second word of the command is
-        return new IfCommand();
+        // Checking if there is anything after if
+        if (splitLine.Length == 1)
+        {
+            // There cant be nothing after the if
+            throw new InvalidLineException();
+        }
+
+        ConditionalStatement cond;
+        try {
+            cond = ParseConditionalStatement(splitLine.Skip(1).ToArray());
+        } catch (Exception e) {
+            throw new InvalidLineException();
+        }
         
+        // Stack of commands to run if the if statement is true
+        Stack<CharacterCommand> comStack = new Stack<CharacterCommand>();
+        bool foundEnd = false;
+        currentLine++; // THIS MOVES TO THE FIRST LINE OF THE IF BLOCK
+        // without this, it causes a stack overflow lmao
+
+        while (currentLine < script.Count)
+        {
+            // Stop when the line reads "end"
+            if (script[currentLine] == "end")
+            {
+                foundEnd = true;
+                break;
+            }
+
+            // Otherwise, parse this line and add it to the comStack
+            CharacterCommand lineCommand;
+            try {
+                lineCommand = ConvertLineToCommand(script[currentLine]);
+            } catch (InvalidLineException e)
+            {
+                throw new InvalidLineException();
+            }
+
+            comStack.Push(lineCommand);
+            currentLine++;
+        }
+
+        if (foundEnd == true)
+        {
+            return new IfCommand(cond, comStack);
+        } else {
+            throw new InvalidLineException();
+        }
     }
 
 
 
-    private Conditional ParseConditional(string[] strings)
+    private ConditionalStatement ParseConditionalStatement(string[] statementWords)
+    {   
+        if (statementWords.Length == 1) {
+            // This means there is only one word in the statement,
+            // which means the statement has to be one of the following
+            switch (statementWords[0])
+            {
+                case "grounded":
+                    return new PlayerGroundedStatement(true);
+                case "!grounded":
+                    return new PlayerGroundedStatement(false);
+                default:
+                    throw new InvalidLineException();
+            }
+        }
+        
+        // If the conditional statement isnt a single word,
+        // Then it must be a FloatComparisonStatement of the following format:
+        // CSV ComparisonSymbol CSV
+        ConditionalStatementValue csv1, csv2;
+        ComparisonType comp;
+        
+
+        // Parsing value for first CSV
+        try {
+            csv1 = ParseCSV(statementWords[0]);
+        } catch (Exception e) {
+            throw new InvalidLineException();
+        }
+
+        // Parsing value for comparison type
+        try {
+            comp = ParseComparisonType(statementWords[1]);
+        } catch (Exception e) {
+            throw new InvalidLineException();
+        }
+
+        // Parsing value for second CSV
+        try {
+            csv2 = ParseCSV(statementWords[2]);
+        } catch (Exception e) {
+            throw new InvalidLineException();
+        }
+
+        return new FloatComparisonStatement(csv1, csv2, comp);
+    }
+
+    private ConditionalStatementValue ParseCSV(string str)
     {
-        switch (strings[1])
+        switch (str)
         {
-            case "grounded":
-                return new PlayerGroundedConditional(true);
-            case "!grounded":
-                return new PlayerGroundedConditional(false);
             case "x":
             case "horizontal":
-                return new PlayerXConditional();
+                return new PlayerPositionCSV(true);
             case "y":
             case "vertical":
-                return new PlayerYConditional();
+                return new PlayerPositionCSV(false);
             case "time":
-                return new SimulationTimeConditional(0);
+                return new SimulationTimeCSV();
+            default:
+                float value = 0;
+                try {
+                    value = float.Parse(str);
+                } catch (Exception e)
+                {
+                    throw new InvalidLineException();
+                }
+                return new FloatCSV(value);
+        }
+    }
+
+    private ComparisonType ParseComparisonType(string str)
+    {
+        switch (str)
+        {
+            case ">":
+                return ComparisonType.GT;
+            case ">=":
+                return ComparisonType.GTEQ;
+            case "=":
+            case "==":
+                return ComparisonType.EQ;
+            case "<=":
+                return ComparisonType.LTEQ;
+            case "<":
+                return ComparisonType.LT;
             default:
                 throw new InvalidLineException();
         }

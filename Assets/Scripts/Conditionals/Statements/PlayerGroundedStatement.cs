@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerGroundedConditional : Conditional
+public class PlayerGroundedStatement : ConditionalStatement
 {
     private bool desiredState;
 
-    public PlayerGroundedConditional(bool state)
+    public PlayerGroundedStatement(bool state)
     {
         desiredState = state;
     }
 
-    public override bool GetValue(CharacterCommandManager ccm)
+    public override bool GetStatementResult(CharacterCommandManager ccm)
     {
         if (ccm.controller.isGrounded == desiredState)
         {

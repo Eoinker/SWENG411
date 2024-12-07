@@ -21,11 +21,9 @@ public class CharacterControl : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-    }
+        isExecuting = false;
+        Debug.Log(moveDirection);
 
-    private void Start()
-    {
-        BeginExecution();
     }
 
     public void Update()
@@ -85,11 +83,13 @@ public class CharacterControl : MonoBehaviour
     private void ResumeExecution()
     {
         isExecuting = true;
+        Debug.Log("resuming");
     }
 
     private void PauseExecution()
     {
         isExecuting = false;
+        Debug.Log("pausing");
     }   
 
     // Pause Execution and then resume after a delay amount in seconds

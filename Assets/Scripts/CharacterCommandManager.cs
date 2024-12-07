@@ -12,35 +12,22 @@ public class CharacterCommandManager : MonoBehaviour
     {
         controller = GetComponent<CharacterControl>();
         commands = new Queue<CharacterCommand>();
+        runtimeStack = new Stack<CharacterCommand>();
     }
 
-    // void Start()
-    // {
-    //     InvokeRepeating("Reset", 0f, 5f);
-    // }
-
-    // private void Reset()
-    // {
-    //     commands.Enqueue(new MoveCommand(1));
-    //     commands.Enqueue(new WaitForSecondsCommand(1f));
-    //     commands.Enqueue(new MoveCommand(0));
-    //     commands.Enqueue(new WaitForSecondsCommand(2f));
-    //     commands.Enqueue(new MoveCommand(-1));
-    //     commands.Enqueue(new WaitForSecondsCommand(0.5f));
-    //     commands.Enqueue(new MoveCommand(1));
-    //     commands.Enqueue(new WaitForSecondsCommand(0.5f));
-    //     commands.Enqueue(new JumpCommand());
-
-    //     this.transform.position = new Vector2(-10, -1);
-    // }
+    void Start()
+    {
+        
+    }
 
     void Update()
     {
-        while (controller.IsExecuting())
+        while (controller.IsExecuting() && (runtimeStack.Count > 0 || commands.Count > 0))
         {
             if (runtimeStack.Count > 0)
             {
                 CharacterCommand command = runtimeStack.Pop();
+                command.Execute(this);
             }
             else if (commands.Count > 0)
             {

@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class IfCommand : CharacterCommand
 {
-    private Conditional condition;
+    private ConditionalStatement condition;
     private Stack<CharacterCommand> commandStack;
 
+    // TEMP
     public IfCommand() {}
-    public IfCommand(Conditional c, Stack<CharacterCommand> cs)
+    // TEMP
+
+    public IfCommand(ConditionalStatement cond, Stack<CharacterCommand> comStack)
     {
-        condition = c;
-        commandStack = cs;
+        condition = cond;
+        commandStack = comStack;
     }
 
     public override void Execute(CharacterCommandManager ccm)
     {
-        if (condition.GetState() == true)
+        if (condition.GetStatementResult(ccm) == true)
         {
             while (commandStack.Count > 0)
             {

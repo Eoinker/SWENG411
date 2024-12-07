@@ -16,4 +16,9 @@ public class SimulationManager : MonoBehaviour
             Instance = this;
         }
     }
+
+    public float GetTime() {
+        // returns the current simulation time
+        return 0;
+    }
 }
