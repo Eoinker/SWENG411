@@ -26,7 +26,24 @@ public class CodeParser : MonoBehaviour
     }
 
     private void SetScript(string rawCode) {
-        script = new List<string>(rawCode.Split('\n'));
+        List<string> rawSplit = new List<string>(rawCode.Split('\n'));
+
+        foreach (string line in rawSplit)
+        {
+            if (string.IsNullOrWhiteSpace(line))
+            {
+                // Ignore any lines that are empty 
+                continue;
+            } else  {
+                string trimmedLine = line.Trim();
+                if (trimmedLine[0] == '/') {
+                    // Ignore any comment lines (lines that start with /) 
+                    continue;
+                } else {
+                    script.Add(trimmedLine);
+                }
+            }
+        }
     }
 
     private Queue<CharacterCommand> ConvertScriptToCommandQueue()
