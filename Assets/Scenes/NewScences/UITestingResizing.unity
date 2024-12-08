@@ -577,6 +577,9 @@ MonoBehaviour:
   maxMoveSpeed: 10
   jumpStrength: 20
   isGrounded: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!212 &194644923
 SpriteRenderer:
   m_ObjectHideFlags: 0
