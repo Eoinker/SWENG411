@@ -13,7 +13,7 @@ public class WaitForSecondsCommand : CharacterCommand
 
     public override void Execute(CharacterCommandManager ccm)
     {
-        IEnumerator coroutine = ccm.controller.PauseExecutionForSeconds(delay);
-        ccm.controller.StartCoroutine(coroutine);
+        IEnumerator coroutine = ccm.PauseExecutionForSeconds(delay);
+        ccm.StartCoroutine(coroutine);
     }
 }

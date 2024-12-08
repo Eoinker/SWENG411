@@ -13,7 +13,7 @@ public class WaitForFramesCommand : CharacterCommand
 
     public override void Execute(CharacterCommandManager ccm)
     {
-        IEnumerator coroutine = ccm.controller.PauseExecutionForFrames(frames);
-        ccm.controller.StartCoroutine(coroutine);
+        IEnumerator coroutine = ccm.PauseExecutionForFrames(frames);
+        ccm.StartCoroutine(coroutine);
     }
 }

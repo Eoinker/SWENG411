@@ -3,23 +3,37 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CodeParser : MonoBehaviour
 {
     public List<string> script;
     public CharacterCommandManager ccm;
     public int currentLine;
+    public TMP_InputField codeInputField;
 
-    public void Start()
-    {
-        ccm.commands = ConvertScriptToCommandQueue();
-        ccm.controller.BeginExecution();
+    public void CompileCodeInput() {
+        SetScript(codeInputField.text);
+        ccm.StopExecuting();
+        ccm.SetCommandQueue(ConvertScriptToCommandQueue());
     }
 
-    public Queue<CharacterCommand> ConvertScriptToCommandQueue()
+    public void RunCodeInput()
+    {
+        CompileCodeInput();
+        Debug.Log("Compiling Complete. Starting Execution!");
+        ccm.BeginExecution();
+    }
+
+    private void SetScript(string rawCode) {
+        script = new List<string>(rawCode.Split('\n'));
+    }
+
+    private Queue<CharacterCommand> ConvertScriptToCommandQueue()
     {
         Queue<CharacterCommand> commands = new Queue<CharacterCommand>();
-        
+        currentLine = 0;
+
         while (currentLine < script.Count)
         {
             CharacterCommand lineCommand;
@@ -75,6 +89,10 @@ public class CodeParser : MonoBehaviour
                 // }
             case "if":
                 return ParseIfCommand(split);
+            case "while":
+                return ParseWhileCommand(split);
+            case "for":
+                return ParseForCommand(split);
             default:
                 throw new InvalidLineException();
         }
@@ -176,12 +194,114 @@ public class CodeParser : MonoBehaviour
 
         if (foundEnd == true)
         {
-            return new IfCommand(cond, comStack);
+            return new IfCommand(cond, new Stack<CharacterCommand>(comStack));
         } else {
             throw new InvalidLineException();
         }
     }
 
+    private CharacterCommand ParseWhileCommand(string[] splitLine)
+    {
+        // Checking if there is anything after while
+        if (splitLine.Length == 1)
+        {
+            // There cant be nothing after the while
+            throw new InvalidLineException();
+        }
+
+        ConditionalStatement cond;
+        try {
+            cond = ParseConditionalStatement(splitLine.Skip(1).ToArray());
+        } catch (Exception e) {
+            throw new InvalidLineException();
+        }
+        
+        // Stack of commands to run if the while statement is true
+        Stack<CharacterCommand> comStack = new Stack<CharacterCommand>();
+        bool foundEnd = false;
+        currentLine++; // without this, it causes a stack overflow again
+
+        while (currentLine < script.Count)
+        {
+            // Stop when the line reads "end"
+            if (script[currentLine] == "end")
+            {
+                foundEnd = true;
+                break;
+            }
+
+            // Otherwise, parse this line and add it to the comStack
+            CharacterCommand lineCommand;
+            try {
+                lineCommand = ConvertLineToCommand(script[currentLine]);
+            } catch (InvalidLineException e)
+            {
+                throw new InvalidLineException();
+            }
+
+            comStack.Push(lineCommand);
+            currentLine++;
+        }
+
+        if (foundEnd == true)
+        {
+            return new WhileCommand(cond, new Stack<CharacterCommand>(comStack));
+        } else {
+            throw new InvalidLineException();
+        }
+    }
+
+    private CharacterCommand ParseForCommand(string[] splitLine)
+    {
+        if (splitLine.Length != 2)
+        {
+            // For loops must have exactly thing after them
+            throw new InvalidLineException();
+        }
+
+        // Parsing the number of iterations to run
+        int count = 0;
+        try {
+            count = int.Parse(splitLine[1]);
+        } catch (Exception e)
+        {
+            throw new InvalidLineException();
+        }
+        
+        // Stack of commands to run "count" number of times
+        Stack<CharacterCommand> comStack = new Stack<CharacterCommand>();
+        bool foundEnd = false;
+        currentLine++; // again, no this = stack overflow
+
+        while (currentLine < script.Count)
+        {
+            // Stop when the line reads "end"
+            if (script[currentLine] == "end")
+            {
+                foundEnd = true;
+                break;
+            }
+
+            // Otherwise, parse this line and add it to the comStack
+            CharacterCommand lineCommand;
+            try {
+                lineCommand = ConvertLineToCommand(script[currentLine]);
+            } catch (InvalidLineException e)
+            {
+                throw new InvalidLineException();
+            }
+
+            comStack.Push(lineCommand);
+            currentLine++;
+        }
+
+        if (foundEnd == true)
+        {
+            return new ForCommand(count, new Stack<CharacterCommand>(comStack));
+        } else {
+            throw new InvalidLineException();
+        }
+    }
 
 
     private ConditionalStatement ParseConditionalStatement(string[] statementWords)
