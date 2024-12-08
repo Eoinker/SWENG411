@@ -7,27 +7,26 @@ public class CharacterControl : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed;
     public float maxMoveSpeed;
+
     [Header("Jump")]
     public float jumpStrength;
-    public bool isGrounded;
+    public bool isGrounded; // Tracks if the player is on the ground
 
     private const float MOVE_ADJUSTEMENT = 1000f;
     private int moveDirection;
     private Rigidbody2D rb;
-    private SpriteRenderer sr;
+
+    public LayerMask groundLayer; // Specify what counts as ground
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
     }
 
-    public void Update()
+    private void Update()
     {
         UpdateMovement();
     }
-
-    #region Movement
 
     private void UpdateMovement()
     {
@@ -35,11 +34,11 @@ public class CharacterControl : MonoBehaviour
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
             return;
-        } else {
-            rb.AddForce(Vector2.right * moveSpeed * MOVE_ADJUSTEMENT * Time.deltaTime * moveDirection, ForceMode2D.Force);
         }
 
-        rb.velocity = new Vector2 (Mathf.Clamp(rb.velocity.x, -maxMoveSpeed, maxMoveSpeed), rb.velocity.y);
+        rb.AddForce(Vector2.right * moveSpeed * MOVE_ADJUSTEMENT * Time.deltaTime * moveDirection, ForceMode2D.Force);
+
+        rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxMoveSpeed, maxMoveSpeed), rb.velocity.y);
     }
 
     public void SetMoveDirection(int direction)
@@ -47,14 +46,13 @@ public class CharacterControl : MonoBehaviour
         moveDirection = direction;
     }
 
-    #endregion
-
-    #region Jumping
-
     public void TryJump()
     {
-        // This function needs checking system for if the player is grounded or not
-        Jump();
+        
+        if (isGrounded) // Only allow jumping when grounded
+        {
+            Jump();
+        }
     }
 
     private void Jump()
@@ -62,5 +60,28 @@ public class CharacterControl : MonoBehaviour
         rb.AddForce(Vector2.up * jumpStrength, ForceMode2D.Impulse);
     }
 
+    #region Collision Handling
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check if the player is colliding with ground
+        if (((1 << collision.gameObject.layer) & groundLayer) != 0)
+        {
+            isGrounded = true;
+            Debug.Log("Player is grounded");
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        // Check if the player stops colliding with ground
+        if (((1 << collision.gameObject.layer) & groundLayer) != 0)
+        {
+            isGrounded = false;
+            Debug.Log("Player is not grounded");
+        }
+    }
+
     #endregion
+
 }
