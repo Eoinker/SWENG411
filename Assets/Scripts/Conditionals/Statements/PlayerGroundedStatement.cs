@@ -15,8 +15,6 @@ public class PlayerGroundedStatement : ConditionalStatement
     {
         if (ccm.controller.isGrounded == desiredState)
         {
-            Debug.Log("IN CONDITION Player is " + (ccm.controller.isGrounded ? "grounded" : "not grounded"));
-            Debug.Log("IN CONDITION desired state is " + (desiredState));
             return true;
         } else {
             return false;

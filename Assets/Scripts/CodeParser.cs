@@ -8,9 +8,17 @@ using TMPro;
 public class CodeParser : MonoBehaviour
 {
     public List<string> script;
-    public CharacterCommandManager ccm;
     public int currentLine;
-    public TMP_InputField codeInputField;
+
+    private CharacterCommandManager ccm;
+    private TMP_InputField codeInputField;
+
+    private void Start()
+    {
+        SimulationUIManager simUI = FindAnyObjectByType<SimulationUIManager>();
+        codeInputField = simUI.codeInputField;
+        ccm = GetComponent<CharacterCommandManager>();
+    }
 
     public void CompileCodeInput() {
         SetScript(codeInputField.text);
@@ -26,6 +34,7 @@ public class CodeParser : MonoBehaviour
     }
 
     private void SetScript(string rawCode) {
+        script.Clear();
         List<string> rawSplit = new List<string>(rawCode.Split('\n'));
 
         foreach (string line in rawSplit)

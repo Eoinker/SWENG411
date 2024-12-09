@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CharacterFlags : MonoBehaviour
 {
-
     [Header("Ground Detection")]
     [SerializeField] private LayerMask groundLayer;
     private bool isGrounded;

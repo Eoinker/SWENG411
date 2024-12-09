@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6912643312651017868}
   - component: {fileID: 7797017392211548185}
   - component: {fileID: 2929601709386370524}
+  - component: {fileID: 7784462645644794110}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -186,6 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb53c3a788c2fc2479f6e74434536218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  commandManager: {fileID: 0}
   moveSpeed: 4
   maxMoveSpeed: 10
   jumpStrength: 20
@@ -193,6 +195,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  respawnPoint: {x: 0, y: -1}
 --- !u!114 &2929601709386370524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,3 +211,18 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &7784462645644794110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6021052690980619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff3a80a910bb53459a5fc9ad65f7558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  script: []
+  ccm: {fileID: 0}
+  currentLine: 0

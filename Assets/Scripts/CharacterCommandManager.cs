@@ -16,7 +16,7 @@ public class CharacterCommandManager : MonoBehaviour
         runtimeStack = new Stack<CharacterCommand>();
     }
 
-    void FixedUpdate()
+    public void ExecuteNextCommand()
     {
         if (isExecuting == true && (runtimeStack.Count + commands.Count) > 0)
         {
@@ -41,8 +41,14 @@ public class CharacterCommandManager : MonoBehaviour
     {
         runtimeStack.Push(command);
     }
+
+    public void Reset()
+    {
+        ClearStackAndQueue();
+        controller.Respawn();
+    }
     
-    public void ClearStackAndQueue()
+    private void ClearStackAndQueue()
     {
         runtimeStack.Clear();
         commands.Clear();

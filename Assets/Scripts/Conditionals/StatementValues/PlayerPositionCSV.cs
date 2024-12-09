@@ -15,9 +15,9 @@ public class PlayerPositionCSV : ConditionalStatementValue
     {
         if (isHorizontal)
         {
-            return ccm.transform.position.x;
+            return ccm.gameObject.transform.position.x;
         } else {
-            return ccm.transform.position.y;
+            return ccm.gameObject.transform.position.y;
         }
     }
 }
