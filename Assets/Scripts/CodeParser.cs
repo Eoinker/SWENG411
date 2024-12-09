@@ -98,6 +98,7 @@ public class CodeParser : MonoBehaviour
                     throw new InvalidLineException();
                 }
             case "jump":
+                Debug.Log("Jump Command");
                 return new JumpCommand();
                 // try {
                 //     return ParseJumpCommand();

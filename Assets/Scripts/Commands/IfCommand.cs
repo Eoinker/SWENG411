@@ -21,9 +21,10 @@ public class IfCommand : CharacterCommand
     {
         if (condition.GetStatementResult(ccm) == true)
         {
-            while (commandStack.Count > 0)
+            Stack<CharacterCommand> tempStack = new Stack<CharacterCommand>(commandStack);
+            while (tempStack.Count > 0)
             {
-                ccm.PushToRuntimeStack(commandStack.Pop());
+                ccm.PushToRuntimeStack(tempStack.Pop());
             }
             
         }

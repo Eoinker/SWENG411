@@ -556,7 +556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10d50b8072dca8e45bd18672eea74727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1410149292}
   offset: {x: 0, y: 0, z: -10}
   smoothSpeed: 1
 --- !u!114 &461247641
@@ -1308,18 +1308,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Let''s try to use a loop to make
-
-    this easier. Here is an example:
-
-    for
-    7
-
-    *this code will run six times
-
-    end
-
-    Enter text...'
+  m_text: "Let's try to use a loop to make\nthis easier. Here is an example:\nwhile
+    1 = 1\n// this code will run forever!\nend\nA while loop will only break\nif
+    the condition is false since\n1 = 1 is never false this will \nrun forever!\nAlso,
+    using wait will make us \nfor one frame.\nEnter text..."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1988,6 +1980,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f58aa22acd45b3c4db034e799b6d1e8f, type: 3}
+--- !u!114 &1410149291 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6912643312651017868, guid: f58aa22acd45b3c4db034e799b6d1e8f, type: 3}
+  m_PrefabInstance: {fileID: 1410149290}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d01cbb0d0a357b4e83a33cc7120b026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1410149292 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3750320876164705617, guid: f58aa22acd45b3c4db034e799b6d1e8f, type: 3}
+  m_PrefabInstance: {fileID: 1410149290}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1410408639
 GameObject:
   m_ObjectHideFlags: 0
@@ -2148,7 +2156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   script: []
-  ccm: {fileID: 0}
+  ccm: {fileID: 1410149291}
   currentLine: 0
   codeInputField: {fileID: 690522056}
 --- !u!4 &1423909937
