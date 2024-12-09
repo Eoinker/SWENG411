@@ -19,22 +19,22 @@ public class LevelSelectManager : MonoBehaviour
     public void LoadLevel1()
     {
         Debug.Log("Loading Level 1...");
-        SceneManager.LoadScene("UITesting");
+        SceneManager.LoadScene("Level1");
     }
     public void LoadLevel2()
     {
         Debug.Log("Loading Level 2...");
-        SceneManager.LoadScene("UITesting");
+        SceneManager.LoadScene("Level2");
     }
     public void LoadLevel3()
     {
         Debug.Log("Loading Level 3...");
-        SceneManager.LoadScene("UITesting");
+        SceneManager.LoadScene("Level3");
     }
     public void LoadLevel4()
     {
         Debug.Log("Loading Level 4...");
-        SceneManager.LoadScene("UITesting");
+        SceneManager.LoadScene("Level4");
     }
     public void LoadLevel5()
     {
