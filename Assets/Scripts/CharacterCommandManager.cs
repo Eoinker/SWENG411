@@ -16,9 +16,9 @@ public class CharacterCommandManager : MonoBehaviour
         runtimeStack = new Stack<CharacterCommand>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        while (isExecuting == true && (runtimeStack.Count + commands.Count) > 0)
+        if (isExecuting == true && (runtimeStack.Count + commands.Count) > 0)
         {
             if (runtimeStack.Count > 0)
             {
