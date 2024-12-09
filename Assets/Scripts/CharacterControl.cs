@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class CharacterControl : MonoBehaviour
 {
+
+    public CharacterCommandManager commandManager; // Assign this in the Inspector
+
+
     [Header("Movement")]
     public float moveSpeed;
     public float maxMoveSpeed;
@@ -15,6 +19,7 @@ public class CharacterControl : MonoBehaviour
     private const float MOVE_ADJUSTEMENT = 1000f;
     private int moveDirection;
     private Rigidbody2D rb;
+    public Transform respawnPoint;
 
     public LayerMask groundLayer; // Specify what counts as ground
 
@@ -70,6 +75,10 @@ public class CharacterControl : MonoBehaviour
             isGrounded = true;
             Debug.Log("Player is grounded");
         }
+        if (collision.gameObject.CompareTag("Hazard"))
+        {
+            Respawn();
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -83,5 +92,26 @@ public class CharacterControl : MonoBehaviour
     }
 
     #endregion
+    public void Respawn()
+    {
+        // Move the character to the respawn point
+        transform.position = respawnPoint.position;
+
+        // Reset physics (velocity, rotation, etc.)
+        rb.velocity = Vector2.zero;
+
+        // Clear the command queue
+        if (commandManager != null)
+        {
+            commandManager.ClearStackAndQueue();
+            commandManager.StopExecuting();
+        }
+        else
+        {
+            Debug.LogWarning("CommandManager is not assigned.");
+        }
+
+        Debug.Log("Character respawned and command queue cleared.");
+    }
 
 }

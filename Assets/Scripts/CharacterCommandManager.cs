@@ -41,6 +41,12 @@ public class CharacterCommandManager : MonoBehaviour
     {
         runtimeStack.Push(command);
     }
+    
+    public void ClearStackAndQueue()
+    {
+        runtimeStack.Clear();
+        commands.Clear();
+    }
 
     #region Execution
 
