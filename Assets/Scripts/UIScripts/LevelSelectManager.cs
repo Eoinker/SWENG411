@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelSelectManager : MonoBehaviour
 {
+    //public Button[] levelButtons;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,9 +14,18 @@ public class LevelSelectManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void UpdateLevelButtons()
     {
-        
+       /* for( int i = 0; i <  levelButtons.Length; i++)
+        {
+            //enables a button if previous level is completed
+            if (i == 0 || LevelProgressManager.IsLevelComplete(i))
+            {
+                levelButtons[i].interactable = true;
+            }
+            else
+                levelButtons[i].interactable = false;
+        }*/
     }
     public void LoadLevel1()
     {
