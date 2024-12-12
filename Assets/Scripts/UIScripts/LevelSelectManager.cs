@@ -31,31 +31,37 @@ public class LevelSelectManager : MonoBehaviour
     {
         Debug.Log("Loading Level 1...");
         SceneManager.LoadScene("Level1");
+        Time.timeScale = 1f;
     }
     public void LoadLevel2()
     {
         Debug.Log("Loading Level 2...");
         SceneManager.LoadScene("Level2");
+        Time.timeScale = 1f;
     }
     public void LoadLevel3()
     {
         Debug.Log("Loading Level 3...");
         SceneManager.LoadScene("Level3");
+        Time.timeScale = 1f;
     }
     public void LoadLevel4()
     {
         Debug.Log("Loading Level 4...");
         SceneManager.LoadScene("Level4");
+        Time.timeScale = 1f;
     }
     public void LoadLevel5()
     {
         Debug.Log("Loading Level 5...");
-        SceneManager.LoadScene("UITesting");
+        SceneManager.LoadScene("Level5");
+        Time.timeScale = 1f;
     }
     public void LoadLevel6()
     {
         Debug.Log("Loading Level 6...");
-        SceneManager.LoadScene("UITesting");
+        SceneManager.LoadScene("Level6");
+        Time.timeScale = 1f;
     }
 
 
@@ -63,5 +69,6 @@ public class LevelSelectManager : MonoBehaviour
     {
         Debug.Log("Returning to Main Menu...");
         SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1f;
     }
 }
