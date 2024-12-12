@@ -1113,6 +1113,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e35e81bc1e0694a96b84e86080e63d, type: 3}
+<<<<<<< Updated upstream
 --- !u!114 &451268741 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3200923857845339435, guid: 86e35e81bc1e0694a96b84e86080e63d, type: 3}
@@ -1135,6 +1136,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3287b87c43f052e45a94d5b218606161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+=======
+--- !u!1001 &560780422
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6965327309660971005, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_Name
+      value: Main Level Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+>>>>>>> Stashed changes
 --- !u!1 &637945935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,6 +1459,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
 --- !u!1 &711756842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1524,6 +1585,8 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1600, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
+=======
+>>>>>>> Stashed changes
 --- !u!1 &736996445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1914,6 +1977,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
 --- !u!1 &975718733
 GameObject:
   m_ObjectHideFlags: 0
@@ -2171,6 +2235,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1264137642}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> Stashed changes
 --- !u!1 &1288245637
 GameObject:
   m_ObjectHideFlags: 0
@@ -2305,11 +2371,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1288245637}
   m_CullTransparentMesh: 1
---- !u!4 &1330649374 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3750320876164705617, guid: f58aa22acd45b3c4db034e799b6d1e8f, type: 3}
-  m_PrefabInstance: {fileID: 1435518121}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1347749620
 GameObject:
   m_ObjectHideFlags: 0
@@ -3303,7 +3364,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 711756844}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenuHandler, Assembly-CSharp
         m_MethodName: TogglePause
         m_Mode: 1
@@ -4133,7 +4194,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 711756844}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenuHandler, Assembly-CSharp
         m_MethodName: LoadMainMenu
         m_Mode: 1
@@ -4387,11 +4448,10 @@ SceneRoots:
   m_Roots:
   - {fileID: 451268740}
   - {fileID: 1435518121}
+  - {fileID: 560780422}
   - {fileID: 2010557072}
-  - {fileID: 711756843}
   - {fileID: 2112618318}
   - {fileID: 1576333532}
-  - {fileID: 975718738}
   - {fileID: 685285557}
   - {fileID: 350111441}
   - {fileID: 276217237}

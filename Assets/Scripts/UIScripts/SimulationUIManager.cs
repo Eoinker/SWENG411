@@ -7,7 +7,7 @@ using TMPro;
 
 public class SimulationUIManager : MonoBehaviour
 {
-    public static Action OnPlayButtonPress, OnResetButtonPress;
+    public static Action OnPlayButtonPress, OnResetButtonPress, OnPauseButtonPress;
 
     public Button playButton, resetButton, pauseButton; // Set in Editor
     public TMP_InputField codeInputField;
@@ -42,6 +42,11 @@ public class SimulationUIManager : MonoBehaviour
         ShowCodingButtons();
 
         OnResetButtonPress?.Invoke();
+    }
+
+    public void PressPause()
+    {
+        OnPauseButtonPress?.Invoke();
     }
 
     private void ShowSimRunningButtons()
