@@ -15,6 +15,7 @@ public class FinishFlag : MonoBehaviour
             showWinScreen();
         }
     }
+    
     public void showWinScreen()
     {
         isFinished = true;

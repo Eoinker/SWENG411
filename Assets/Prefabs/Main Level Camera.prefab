@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7537333591129230045}
   - component: {fileID: 6513682363576207263}
   - component: {fileID: 7167186034402278760}
-  - component: {fileID: 6978962523373691339}
   - component: {fileID: 1079751209578212299}
   m_Layer: 0
   m_Name: Main Level Camera
@@ -94,21 +93,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6965327309660971005}
   m_Enabled: 1
---- !u!114 &6978962523373691339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6965327309660971005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f89b8df56361e645878378c2d4f2e6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputField: {fileID: 0}
-  outputText: {fileID: 0}
-  capturedText: 
 --- !u!114 &1079751209578212299
 MonoBehaviour:
   m_ObjectHideFlags: 0
