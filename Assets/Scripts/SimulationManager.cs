@@ -6,7 +6,7 @@ using UnityEngine;
 public class SimulationManager : MonoBehaviour
 {
     public static SimulationManager Instance;
-
+    private float simulationTime = 0f; // Tracks the simulation time
     private bool simIsRunning;
     private CharacterCommandManager[] commandManagers;
     private CodeParser[] parsers;
@@ -53,6 +53,7 @@ public class SimulationManager : MonoBehaviour
         {
             ccm.BeginExecution();
         }
+        simulationTime = 0f; // Reset the simulation time
         simIsRunning = true;
         OnSimulationStart?.Invoke();
     }
@@ -72,6 +73,7 @@ public class SimulationManager : MonoBehaviour
     {
         if (simIsRunning)
         {
+            simulationTime += Time.fixedDeltaTime; // Increment time during simulation
             foreach (CharacterCommandManager ccm in commandManagers)
             {
                 ccm.ExecuteNextCommand();
@@ -88,8 +90,8 @@ public class SimulationManager : MonoBehaviour
         return simIsRunning;
     }
 
-    public float GetTime() {
-        // returns the current simulation time
-        return 0;
+    public float GetTime()
+    {
+        return simulationTime; // Return the current simulation time
     }
 }
