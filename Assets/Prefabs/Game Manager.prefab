@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5855088556268304072}
   - component: {fileID: 3200923857845339435}
   - component: {fileID: 5926906689772527880}
+  - component: {fileID: 8055994308092182868}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -46,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68590076438e57f498fc3651513f165b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLevelComplete: 0
 --- !u!114 &3200923857845339435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,3 +73,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3287b87c43f052e45a94d5b218606161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8055994308092182868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7268386221024997338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14291a6b143e9074e81e4db6e2c546d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  zoomOutSize: 20
+  zoomSpeed: 2
+  levelBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
