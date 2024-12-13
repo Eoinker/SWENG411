@@ -14,7 +14,7 @@ public class LevelCompletedStatement : ConditionalStatement
     public override bool GetStatementResult(CharacterCommandManager ccm)
     {
         // CCM not needed here
-        if (SimulationManager.Instance.IsLevelComplete() == desiredState)
+        if (SimulationManager.Instance.isLevelComplete == desiredState)
         {
             return true;
         } else {

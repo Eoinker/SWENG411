@@ -12,7 +12,7 @@ public class SimulationManager : MonoBehaviour
     private CodeParser[] parsers;
 
     public static Action OnSimulationReset, OnSimulationStart;
-    private bool isLevelComplete;
+    public bool isLevelComplete;
     private void Awake()
     {
         if (Instance != null && Instance != this)
