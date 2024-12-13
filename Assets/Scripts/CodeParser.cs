@@ -7,6 +7,8 @@ using TMPro;
 
 public class CodeParser : MonoBehaviour
 {
+    public delegate void LineErrorHandler(string e);
+    public static event LineErrorHandler OnLineError;
     public List<string> script;
     public int currentLine;
 
@@ -20,10 +22,19 @@ public class CodeParser : MonoBehaviour
         ccm = GetComponent<CharacterCommandManager>();
     }
 
-    public void CompileCodeInput() {
+    public bool CompileCodeInput() {
         SetScript(codeInputField.text);
         ccm.StopExecuting();
-        ccm.SetCommandQueue(ConvertScriptToCommandQueue());
+        Queue<CharacterCommand> commandQueue;
+        try {
+            commandQueue = ConvertScriptToCommandQueue();
+        } catch (InvalidLineException e)
+        {
+            OnLineError?.Invoke(e.GetErrorText());
+            return false;
+        }
+        ccm.SetCommandQueue(commandQueue);
+        return true;
     }
 
     public void RunCodeInput()
@@ -34,6 +45,7 @@ public class CodeParser : MonoBehaviour
     }
 
     private void SetScript(string rawCode) {
+        
         script.Clear();
         List<string> rawSplit = new List<string>(rawCode.Split('\n'));
 
@@ -49,7 +61,7 @@ public class CodeParser : MonoBehaviour
                     // Ignore any comment lines (lines that start with /) 
                     continue;
                 } else {
-                    script.Add(trimmedLine);
+                    script.Add(trimmedLine.ToLower());
                 }
             }
         }
@@ -67,10 +79,7 @@ public class CodeParser : MonoBehaviour
                 lineCommand = ConvertLineToCommand(script[currentLine]);
             } catch (InvalidLineException e)
             {
-                Debug.LogException(e);
-                Debug.Break();
-                return new Queue<CharacterCommand>();
-                // return whatever commands have been converted so far
+                throw e;
             }
 
             commands.Enqueue(lineCommand);
@@ -85,10 +94,8 @@ public class CodeParser : MonoBehaviour
         // Check if line is empty
         if (string.IsNullOrEmpty(line))
         {
-            throw new InvalidLineException();
+            throw new InvalidLineException(currentLine, "This error should never happen!");
         }
-
-        // force all letters to lowercase
 
         string[] split = line.Split(' ');
 
@@ -98,29 +105,40 @@ public class CodeParser : MonoBehaviour
                 try {
                     return ParseMoveCommand(split);
                 } catch (InvalidLineException e) {
-                    throw new InvalidLineException();
+                    throw e;
                 }
             case "wait":
                 try {
                     return ParseWaitCommand(split);
                 } catch (InvalidLineException e) {
-                    throw new InvalidLineException();
+                    throw e;
                 }
             case "jump":
-                return new JumpCommand();
-                // try {
-                //     return ParseJumpCommand();
-                // } catch (InvalidLineException e) {
-                //     throw new InvalidLineException();
-                // }
+                try {
+                    return ParseJumpCommand(split);
+                } catch (InvalidLineException e) {
+                    throw e;
+                }
             case "if":
-                return ParseIfCommand(split);
+                try {
+                    return ParseIfCommand(split);
+                } catch (InvalidLineException e) {
+                    throw e;
+                }
             case "while":
-                return ParseWhileCommand(split);
+                try {
+                    return ParseWhileCommand(split);
+                } catch (InvalidLineException e) {
+                    throw e;
+                }
             case "for":
-                return ParseForCommand(split);
+                try {
+                    return ParseForCommand(split);
+                } catch (InvalidLineException e) {
+                    throw e;
+                }
             default:
-                throw new InvalidLineException();
+                throw new InvalidLineException(currentLine, "'" + split[0] + "' is not a recognized command.");
         }
     }
 
@@ -129,7 +147,7 @@ public class CodeParser : MonoBehaviour
         // Move command only takes one additional word after
         if (splitLine.Length != 2)
         {
-            throw new InvalidLineException();
+            throw new InvalidLineException(currentLine, "The move command requires exactly one parameter.");
         }
 
         // Checking what the second word of the command is
@@ -145,7 +163,7 @@ public class CodeParser : MonoBehaviour
             case "stop":
                 return new MoveCommand(0);
             default:
-                throw new InvalidLineException();
+                throw new InvalidLineException(currentLine, "'" + splitLine[1] + "' is not a recognized parameter for the move command.");
         }
     }
 
@@ -161,9 +179,9 @@ public class CodeParser : MonoBehaviour
         float seconds = 0;
         try {
             seconds = float.Parse(splitLine[1]);
-        } catch (Exception e)
+        } catch 
         {
-            throw new InvalidLineException();
+            throw new InvalidLineException(currentLine, "Unable to convert '" + splitLine[1] + "' to a float.");
         }
 
         return new WaitForSecondsCommand(seconds);
@@ -171,6 +189,12 @@ public class CodeParser : MonoBehaviour
 
     private CharacterCommand ParseJumpCommand(string[] splitLine)
     {
+        // if there is more after "jump" 
+        if (splitLine.Length > 1)
+        {
+            throw new InvalidLineException(currentLine, "The jump command does take any parameters.");
+        }
+
         return new JumpCommand();
     }
 
@@ -180,14 +204,17 @@ public class CodeParser : MonoBehaviour
         if (splitLine.Length == 1)
         {
             // There cant be nothing after the if
-            throw new InvalidLineException();
+            throw new InvalidLineException(currentLine, "The if command requires additional parameters.");
         }
+
+        // Keeping track of where the if statement starts
+        int ifStatementLineNum = currentLine;
 
         ConditionalStatement cond;
         try {
             cond = ParseConditionalStatement(splitLine.Skip(1).ToArray());
-        } catch (Exception e) {
-            throw new InvalidLineException();
+        } catch (InvalidLineException e) {
+            throw e;
         }
         
         // Stack of commands to run if the if statement is true
@@ -211,7 +238,7 @@ public class CodeParser : MonoBehaviour
                 lineCommand = ConvertLineToCommand(script[currentLine]);
             } catch (InvalidLineException e)
             {
-                throw new InvalidLineException();
+                throw e;
             }
 
             comStack.Push(lineCommand);
@@ -222,7 +249,7 @@ public class CodeParser : MonoBehaviour
         {
             return new IfCommand(cond, new Stack<CharacterCommand>(comStack));
         } else {
-            throw new InvalidLineException();
+            throw new InvalidLineException(ifStatementLineNum, "This if statement has no end.");
         }
     }
 
@@ -232,14 +259,17 @@ public class CodeParser : MonoBehaviour
         if (splitLine.Length == 1)
         {
             // There cant be nothing after the while
-            throw new InvalidLineException();
+            throw new InvalidLineException(currentLine, "The while command requires additional parameters.");
         }
+
+        // Keeping track of where the while loop starts
+        int whileLoopLineNum = currentLine;
 
         ConditionalStatement cond;
         try {
             cond = ParseConditionalStatement(splitLine.Skip(1).ToArray());
-        } catch (Exception e) {
-            throw new InvalidLineException();
+        } catch (InvalidLineException e) {
+            throw e;
         }
         
         // Stack of commands to run if the while statement is true
@@ -262,7 +292,7 @@ public class CodeParser : MonoBehaviour
                 lineCommand = ConvertLineToCommand(script[currentLine]);
             } catch (InvalidLineException e)
             {
-                throw new InvalidLineException();
+                throw e;
             }
 
             comStack.Push(lineCommand);
@@ -273,7 +303,7 @@ public class CodeParser : MonoBehaviour
         {
             return new WhileCommand(cond, new Stack<CharacterCommand>(comStack));
         } else {
-            throw new InvalidLineException();
+            throw new InvalidLineException(whileLoopLineNum, "This while loop has no end.");
         }
     }
 
@@ -282,16 +312,18 @@ public class CodeParser : MonoBehaviour
         if (splitLine.Length != 2)
         {
             // For loops must have exactly thing after them
-            throw new InvalidLineException();
+            throw new InvalidLineException(currentLine, "The for command requires exactly one parameter.");
         }
+        // Keeping track of where the for loop starts
+        int forLoopLineNum = currentLine;
 
         // Parsing the number of iterations to run
         int count = 0;
         try {
             count = int.Parse(splitLine[1]);
-        } catch (Exception e)
+        } catch
         {
-            throw new InvalidLineException();
+            throw new InvalidLineException(currentLine, "Unable to convert '" + splitLine[1] + "' to an integer.");
         }
         
         // Stack of commands to run "count" number of times
@@ -314,7 +346,7 @@ public class CodeParser : MonoBehaviour
                 lineCommand = ConvertLineToCommand(script[currentLine]);
             } catch (InvalidLineException e)
             {
-                throw new InvalidLineException();
+                throw e;
             }
 
             comStack.Push(lineCommand);
@@ -325,7 +357,7 @@ public class CodeParser : MonoBehaviour
         {
             return new ForCommand(count, new Stack<CharacterCommand>(comStack));
         } else {
-            throw new InvalidLineException();
+            throw new InvalidLineException(forLoopLineNum, "This for loop has no end.");
         }
     }
 
@@ -352,39 +384,44 @@ public class CodeParser : MonoBehaviour
                 case "!complete":
                     return new LevelCompletedStatement(false);
                 default:
-                    throw new InvalidLineException();
+                    throw new InvalidLineException(currentLine, "'" + statementWords[0] + "' is not a recognized boolean variable.");
             }
+        } else if (statementWords.Length == 3) {
+            // If the conditional statement isnt a single word,
+            // Then it must be a FloatComparisonStatement of the following format:
+            // CSV ComparisonSymbol CSV
+            ConditionalStatementValue csv1, csv2;
+            ComparisonType comp;
+            
+
+            // Parsing value for first CSV
+            try {
+                csv1 = ParseCSV(statementWords[0]);
+            } catch (InvalidLineException e) {
+                throw e;
+            }
+
+            // Parsing value for comparison type
+            try {
+                comp = ParseComparisonType(statementWords[1]);
+            } catch (InvalidLineException e) {
+                throw e;
+            }
+
+            // Parsing value for second CSV
+            try {
+                csv2 = ParseCSV(statementWords[2]);
+            } catch (InvalidLineException e) {
+                throw e;
+            }
+
+            return new FloatComparisonStatement(csv1, csv2, comp);
+        } else {
+            // If the conditional statement does not match one of the above forms then it is invalid.
+            throw new InvalidLineException(currentLine, "Conditional statements following if or while commands must be one of two forms: a single recognized boolean variable (i.e. grounded), or a comparison of recognized float variables (i.e time < 3).");
         }
         
-        // If the conditional statement isnt a single word,
-        // Then it must be a FloatComparisonStatement of the following format:
-        // CSV ComparisonSymbol CSV
-        ConditionalStatementValue csv1, csv2;
-        ComparisonType comp;
         
-
-        // Parsing value for first CSV
-        try {
-            csv1 = ParseCSV(statementWords[0]);
-        } catch (Exception e) {
-            throw new InvalidLineException();
-        }
-
-        // Parsing value for comparison type
-        try {
-            comp = ParseComparisonType(statementWords[1]);
-        } catch (Exception e) {
-            throw new InvalidLineException();
-        }
-
-        // Parsing value for second CSV
-        try {
-            csv2 = ParseCSV(statementWords[2]);
-        } catch (Exception e) {
-            throw new InvalidLineException();
-        }
-
-        return new FloatComparisonStatement(csv1, csv2, comp);
     }
 
     private ConditionalStatementValue ParseCSV(string str)
@@ -403,9 +440,9 @@ public class CodeParser : MonoBehaviour
                 float value = 0;
                 try {
                     value = float.Parse(str);
-                } catch (Exception e)
+                } catch
                 {
-                    throw new InvalidLineException();
+                    throw new InvalidLineException(currentLine, "Unable to convert '" + str + "' to a float, and it is not a recognized variable.");
                 }
                 return new FloatCSV(value);
         }
@@ -427,7 +464,7 @@ public class CodeParser : MonoBehaviour
             case "<":
                 return ComparisonType.LT;
             default:
-                throw new InvalidLineException();
+                throw new InvalidLineException(currentLine, "'" + str + "' is not a recognized comparison operator.");
         }
     }
 }

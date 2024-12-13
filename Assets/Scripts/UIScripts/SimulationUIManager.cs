@@ -11,22 +11,27 @@ public class SimulationUIManager : MonoBehaviour
 
     public Button playButton, resetButton, pauseButton; // Set in Editor
     public TMP_InputField codeInputField;
+    public GameObject errorPanel;
+    public TMP_Text errorText;
 
-    public void Update()
-    {
-
-    }
 
     private void OnEnable()
     {
         SimulationManager.OnSimulationStart += ShowSimRunningButtons;
         SimulationManager.OnSimulationReset += ShowCodingButtons;
+        SimulationManager.OnCompilationStart += DisableErrorText;
+
+
+        CodeParser.OnLineError += UpdateErrorText;
     }
 
     private void OnDisable()
     {
         SimulationManager.OnSimulationStart -= ShowSimRunningButtons;
         SimulationManager.OnSimulationReset -= ShowCodingButtons;
+        SimulationManager.OnCompilationStart -= DisableErrorText;
+
+        CodeParser.OnLineError -= UpdateErrorText;
     }
 
 
@@ -61,5 +66,16 @@ public class SimulationUIManager : MonoBehaviour
         resetButton.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(false);
         playButton.gameObject.SetActive(true);
+    }
+
+    private void UpdateErrorText(string errorString)
+    {
+        errorText.text = errorString;
+        errorPanel.gameObject.SetActive(true);
+    }
+
+    private void DisableErrorText()
+    {
+        errorPanel.gameObject.SetActive(false);
     }
 }

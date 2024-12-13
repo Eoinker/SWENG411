@@ -2,5 +2,17 @@ using System;
 
 public class InvalidLineException : Exception
 {
-    public InvalidLineException() : base("Line of code is not valid") { }
+    private int lineNumber;
+    private string message;
+
+    public InvalidLineException(int lineNumber, string message) 
+    {
+        this.lineNumber = lineNumber + 1; // add one bc code parser starts at index 0
+        this.message = message;
+    }
+
+    public string GetErrorText()
+    {
+        return "Error! Line " + lineNumber + ":\n" + message;
+    }
 }
