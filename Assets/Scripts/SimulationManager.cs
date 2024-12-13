@@ -11,7 +11,7 @@ public class SimulationManager : MonoBehaviour
     private CharacterCommandManager[] commandManagers;
     private CodeParser[] parsers;
 
-    public static Action OnSimulationReset, OnSimulationStart;
+    public static Action OnSimulationReset, OnSimulationStart, OnCompilationStart;
     public bool isLevelComplete;
     private void Awake()
     {
@@ -45,10 +45,21 @@ public class SimulationManager : MonoBehaviour
     public void RunSimulation()
     {
         ResetSimulation();
+
+        OnCompilationStart?.Invoke();
+        bool isError = false;
         foreach (CodeParser parser in parsers)
         {
-            parser.CompileCodeInput();
+            if (parser.CompileCodeInput() == false)
+            {
+                isError = true;
+            }
         }
+        if (isError == true)
+        {
+            return;
+        }
+
         foreach (CharacterCommandManager ccm in commandManagers)
         {
             ccm.BeginExecution();

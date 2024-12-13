@@ -3191,6 +3191,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1576333532}
     m_Modifications:
+    - target: {fileID: 1851762128485776067, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1955841958386195764, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
       propertyPath: m_Name
       value: UIBackground (1)
@@ -3274,37 +3278,6 @@ PrefabInstance:
     - target: {fileID: 2083290786609293392, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4707465901218914169, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4707465901218914169, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4707465901218914169, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4707465901218914169, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4707465901218914169, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4707465901218914169, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6359772322615203804, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
-      propertyPath: m_text
-      value: "Let's add an if statement to our\r\nloop, for this level we only want
-        \r\nto jump when were grounded \r\nto do this we will use something\r\nlike
-        this inside of our loop:\r\nif grounded\r\n// this code will run if grounded\r\nend\r\nEnter
-        text..."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

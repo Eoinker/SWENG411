@@ -30,37 +30,37 @@ public class LevelSelectManager : MonoBehaviour
     public void LoadLevel1()
     {
         Debug.Log("Loading Level 1...");
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level1_2.0");
         Time.timeScale = 1f;
     }
     public void LoadLevel2()
     {
         Debug.Log("Loading Level 2...");
-        SceneManager.LoadScene("Level2");
+        SceneManager.LoadScene("Level2_2.0");
         Time.timeScale = 1f;
     }
     public void LoadLevel3()
     {
         Debug.Log("Loading Level 3...");
-        SceneManager.LoadScene("Level3");
+        SceneManager.LoadScene("Level3_2.0");
         Time.timeScale = 1f;
     }
     public void LoadLevel4()
     {
         Debug.Log("Loading Level 4...");
-        SceneManager.LoadScene("Level4");
+        SceneManager.LoadScene("Level4_2.0");
         Time.timeScale = 1f;
     }
     public void LoadLevel5()
     {
         Debug.Log("Loading Level 5...");
-        SceneManager.LoadScene("Level5");
+        SceneManager.LoadScene("Level5_2.0");
         Time.timeScale = 1f;
     }
     public void LoadLevel6()
     {
         Debug.Log("Loading Level 6...");
-        SceneManager.LoadScene("Level6");
+        SceneManager.LoadScene("Level6_2.0");
         Time.timeScale = 1f;
     }
 
