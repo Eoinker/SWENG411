@@ -10,10 +10,9 @@ public class SimulationManager : MonoBehaviour
     private bool simIsRunning;
     private CharacterCommandManager[] commandManagers;
     private CodeParser[] parsers;
-    private float simulationTime;
 
     public static Action OnSimulationReset, OnSimulationStart;
-
+    private bool isLevelComplete;
     private void Awake()
     {
         if (Instance != null && Instance != this)
