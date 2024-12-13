@@ -107,7 +107,6 @@ public class CodeParser : MonoBehaviour
                     throw new InvalidLineException();
                 }
             case "jump":
-                Debug.Log("Jump Command");
                 return new JumpCommand();
                 // try {
                 //     return ParseJumpCommand();
@@ -342,6 +341,16 @@ public class CodeParser : MonoBehaviour
                     return new PlayerGroundedStatement(true);
                 case "!grounded":
                     return new PlayerGroundedStatement(false);
+                case "true":
+                    return new SimpleBooleanStatement(true);
+                case "false":
+                    return new SimpleBooleanStatement(false);
+                case "completed":
+                case "complete":
+                    return new LevelCompletedStatement(true);
+                case "!completed":
+                case "!complete":
+                    return new LevelCompletedStatement(false);
                 default:
                     throw new InvalidLineException();
             }

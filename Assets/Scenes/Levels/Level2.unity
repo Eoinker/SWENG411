@@ -519,6 +519,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 249492367}
   m_CullTransparentMesh: 1
+<<<<<<< Updated upstream
 --- !u!1 &325612657
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,6 +911,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380992868}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> Stashed changes
 --- !u!1 &658751398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1576,7 +1579,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948378344}
   m_CullTransparentMesh: 1
+<<<<<<< Updated upstream
 --- !u!1001 &975674829
+=======
+--- !u!1001 &1004613429
+>>>>>>> Stashed changes
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1584,6 +1591,7 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< Updated upstream
     - target: {fileID: 747908173978164867, guid: 7a22f82e8cdcc0c47961997a4aa3801b, type: 3}
       propertyPath: WinScreen
       value: 
@@ -1629,6 +1637,53 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6382917371456676398, guid: 7a22f82e8cdcc0c47961997a4aa3801b, type: 3}
+=======
+    - target: {fileID: 6965327309660971005, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_Name
+      value: Main Level Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965327309660971005, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537333591129230045, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
@@ -1636,12 +1691,16 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
+<<<<<<< Updated upstream
   m_SourcePrefab: {fileID: 100100000, guid: 7a22f82e8cdcc0c47961997a4aa3801b, type: 3}
 --- !u!4 &982579505 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3750320876164705617, guid: f58aa22acd45b3c4db034e799b6d1e8f, type: 3}
   m_PrefabInstance: {fileID: 3797196150556895909}
   m_PrefabAsset: {fileID: 0}
+=======
+  m_SourcePrefab: {fileID: 100100000, guid: 046b97e256d6a9946986b6189e4a1690, type: 3}
+>>>>>>> Stashed changes
 --- !u!1 &1075351301
 GameObject:
   m_ObjectHideFlags: 0
@@ -3467,7 +3526,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1732606675}
   - {fileID: 3797196150556895909}
-  - {fileID: 325612662}
+  - {fileID: 1004613429}
   - {fileID: 36529430}
   - {fileID: 146859163}
   - {fileID: 1832602445}

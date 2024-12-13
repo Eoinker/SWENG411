@@ -10,6 +10,7 @@ public class SimulationManager : MonoBehaviour
     private bool simIsRunning;
     private CharacterCommandManager[] commandManagers;
     private CodeParser[] parsers;
+    private float simulationTime;
 
     public static Action OnSimulationReset, OnSimulationStart;
 
@@ -65,7 +66,19 @@ public class SimulationManager : MonoBehaviour
             ccm.Reset();
         }
         simIsRunning = false;
+        simulationTime = 0;
+        isLevelComplete = false;
         OnSimulationReset?.Invoke();
+    }
+
+    public void PauseSimulation()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeSimulation()
+    {
+        Time.timeScale = 1f;
     }
 
 
@@ -78,11 +91,10 @@ public class SimulationManager : MonoBehaviour
             {
                 ccm.ExecuteNextCommand();
             }
+
+            // Debug.Log(string.Format("{0:0.00}", GetTime()));
         }   
     }
-
-
-  
 
 
     public bool IsRunning()
