@@ -116,4 +116,13 @@ public class SimulationManager : MonoBehaviour
     {
         return simulationTime; // Return the current simulation time
     }
+    public int GetLines()
+    {
+        int lines = 0;
+        foreach (CodeParser parser in parsers)
+        {
+            lines += parser.linesOfCode;
+        }
+        return lines;
+    }
 }

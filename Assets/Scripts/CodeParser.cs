@@ -10,6 +10,7 @@ public class CodeParser : MonoBehaviour
     public delegate void LineErrorHandler(string e);
     public static event LineErrorHandler OnLineError;
     public List<string> script;
+    public int linesOfCode = 0;
     public int currentLine;
 
     private CharacterCommandManager ccm;
@@ -48,7 +49,7 @@ public class CodeParser : MonoBehaviour
         
         script.Clear();
         List<string> rawSplit = new List<string>(rawCode.Split('\n'));
-
+        linesOfCode = rawSplit.Count;
         foreach (string line in rawSplit)
         {
             if (string.IsNullOrWhiteSpace(line))
