@@ -83,6 +83,7 @@ public class SimulationManager : MonoBehaviour
         simulationTime = 0;
         isLevelComplete = false;
         OnSimulationReset?.Invoke();
+        Time.timeScale = 1f;
     }
 
     public void PauseSimulation()
