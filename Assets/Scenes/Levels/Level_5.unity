@@ -433,7 +433,7 @@ Transform:
   m_GameObject: {fileID: 276217234}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 68.8, y: 26, z: 0}
+  m_LocalPosition: {x: 64.16, y: 26, z: 0}
   m_LocalScale: {x: 12.6515, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -786,7 +786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6382917371456676398, guid: 7a22f82e8cdcc0c47961997a4aa3801b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 68.520004
+      value: 67.84
       objectReference: {fileID: 0}
     - target: {fileID: 6382917371456676398, guid: 7a22f82e8cdcc0c47961997a4aa3801b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1374,8 +1374,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6359772322615203804, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
       propertyPath: m_text
-      value: "Looks like for this level you will\nneed to change direction.\nRemeber
-        you can also use \nmove left.\nEnter text..."
+      value: 'You are also able to use if
+
+        statements for variables like
+
+        your
+        x and y axis, for example:
+
+        if y > 10
+
+        // this code will
+        only run if your
+
+        //character is above 10
+
+        end
+
+        This
+        level is very similar to the
+
+        last one, good luck!
+
+        Enter
+        text...'
       objectReference: {fileID: 0}
     - target: {fileID: 8152423054055303507, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
       propertyPath: m_Size.x

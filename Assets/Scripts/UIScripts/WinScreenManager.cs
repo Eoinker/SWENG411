@@ -10,20 +10,20 @@ public class WinScreenManager : MonoBehaviour
     }
 
     public void LoadNextLevel()
+{
+    string currentSceneName = SceneManager.GetActiveScene().name;
+    string nextSceneName = $"Level_{int.Parse(currentSceneName.Replace("Level_", "")) + 1}";
+    Debug.Log($"Loading next level: {nextSceneName}");
+    if (Application.CanStreamedLevelBeLoaded(nextSceneName))
     {
-        // Load the next level by incrementing the current scene index
-        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-
-        // Ensure the next level exists
-        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
-        {
-            SceneManager.LoadScene(nextSceneIndex);
-        }
-        else
-        {
-            Debug.LogWarning("Next level does not exist!");
-        }
+        SceneManager.LoadScene(nextSceneName);
     }
+    else
+    {
+        Debug.LogWarning("Next level does not exist.");
+    }
+}
+
 
     public void LoadMainMenu()
     {

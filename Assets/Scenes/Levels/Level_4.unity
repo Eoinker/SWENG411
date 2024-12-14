@@ -986,8 +986,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6359772322615203804, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
       propertyPath: m_text
-      value: "Looks like for this level you will\nneed to change direction.\nRemeber
-        you can also use \nmove left.\nEnter text..."
+      value: "Let's add an if statement to our\nloop, for this level we only want\nto
+        jump when were grounded\nto do this we will use something\nlike this inside
+        of our loop:\nif grounded\n//this code will run if grounded\nend\nWe can
+        also add a wait \ncommand to wait before \nwe jump too!\nEnter text..."
       objectReference: {fileID: 0}
     - target: {fileID: 8152423054055303507, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
       propertyPath: m_Size.x

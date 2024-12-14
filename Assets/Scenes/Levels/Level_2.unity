@@ -919,8 +919,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6359772322615203804, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
       propertyPath: m_text
-      value: "Looks like for this level you will\nneed to change direction.\nRemeber
-        you can also use \nmove left.\nEnter text..."
+      value: 'Now we need to hop over the
+
+        obsticles, use "jump" to jump
+
+        and
+
+        "wait
+        1" to wait one second.
+
+        Enter text...'
       objectReference: {fileID: 0}
     - target: {fileID: 8152423054055303507, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
       propertyPath: m_Size.x

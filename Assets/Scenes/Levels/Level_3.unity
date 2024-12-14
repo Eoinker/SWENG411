@@ -512,8 +512,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6359772322615203804, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
       propertyPath: m_text
-      value: "Looks like for this level you will\nneed to change direction.\nRemeber
-        you can also use \nmove left.\nEnter text..."
+      value: "Let's try to use a loop to make\r\nthis easier. Here is an example:\r\nwhile
+        1 = 1\r\n//this code will run forever!\r\nend\r\nA while loop will only break\r\nif
+        the condition is false \r\nsince 1 = 1 is never false \r\nthis will run forever!\r\nEnter
+        text..."
       objectReference: {fileID: 0}
     - target: {fileID: 8152423054055303507, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
       propertyPath: m_Size.x
