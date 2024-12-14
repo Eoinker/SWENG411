@@ -117,6 +117,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 7310899016601541024, guid: f5b638175f9ca394cbe29059582e0d9f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8066789233264570918, guid: f5b638175f9ca394cbe29059582e0d9f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -801,6 +805,10 @@ PrefabInstance:
         this inside of our loop:\r\nif grounded\r\n// this code will run if grounded\r\nend\r\nEnter
         text..."
       objectReference: {fileID: 0}
+    - target: {fileID: 7816628290748771711, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
+      propertyPath: m_text
+      value: Resume
+      objectReference: {fileID: 0}
     - target: {fileID: 8152423054055303507, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
       propertyPath: m_Size.x
       value: 126.034294
@@ -817,11 +825,26 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -3.678299
       objectReference: {fileID: 0}
+    - target: {fileID: 8302434138712159781, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
+      propertyPath: resumeButton
+      value: 
+      objectReference: {fileID: 1989226697130375602}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
+--- !u!114 &1989226697130375602 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4688789933033490672, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}
+  m_PrefabInstance: {fileID: 6524249929014997314}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5072072773837166866 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2083290786609293392, guid: bce19a2795f338e4ebd13c6347d9ba04, type: 3}

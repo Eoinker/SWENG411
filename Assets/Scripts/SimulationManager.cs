@@ -33,6 +33,8 @@ public class SimulationManager : MonoBehaviour
         CharacterControl.OnHazardHit += ResetSimulation;
         SimulationUIManager.OnPlayButtonPress += RunSimulation;
         SimulationUIManager.OnResetButtonPress += ResetSimulation;
+        SimulationUIManager.OnPauseButtonPress += PauseSimulation;
+        SimulationUIManager.OnResumeButtonPress += ResumeSimulation;
     }
 
     private void OnDisable()
@@ -40,6 +42,8 @@ public class SimulationManager : MonoBehaviour
         CharacterControl.OnHazardHit -= ResetSimulation;
         SimulationUIManager.OnPlayButtonPress -= RunSimulation;
         SimulationUIManager.OnResetButtonPress -= ResetSimulation;
+        SimulationUIManager.OnPauseButtonPress -= PauseSimulation;
+        SimulationUIManager.OnResumeButtonPress = ResumeSimulation;
     }
 
     public void RunSimulation()
