@@ -8,11 +8,12 @@ public class StatusBarController : MonoBehaviour
     public TMP_Text yPositionText; // Reference to the Y Position text
     public TMP_Text groundedText;  // Reference to the Grounded text
 
-    public CharacterControl characterControl; // Reference to the CharacterControl script
+    private CharacterControl characterControl; // Reference to the CharacterControl script
     private Transform player;                 // Reference to the player's transform
 
     private void Start()
     {
+        characterControl = FindFirstObjectByType<CharacterControl>();
         if (characterControl != null)
         {
             player = characterControl.transform;
