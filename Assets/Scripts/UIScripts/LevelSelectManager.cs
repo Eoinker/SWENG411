@@ -69,6 +69,12 @@ public class LevelSelectManager : MonoBehaviour
         SceneManager.LoadScene("Level_7");
         Time.timeScale = 1f;
     }
+    public void LoadLevel8()
+    {
+        Debug.Log("Loading Level 8...");
+        SceneManager.LoadScene("Level_8");
+        Time.timeScale = 1f;
+    }
 
 
 
