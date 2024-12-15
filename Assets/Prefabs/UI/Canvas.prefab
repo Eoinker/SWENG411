@@ -113,6 +113,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7493314938502603560}
     m_Modifications:
+    - target: {fileID: 462387993669105671, guid: f5b638175f9ca394cbe29059582e0d9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4888538145325948203}
+    - target: {fileID: 462387993669105671, guid: f5b638175f9ca394cbe29059582e0d9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 462387993669105671, guid: f5b638175f9ca394cbe29059582e0d9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WinScreenManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803077617774270579, guid: f5b638175f9ca394cbe29059582e0d9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4888538145325948203}
+    - target: {fileID: 2803077617774270579, guid: f5b638175f9ca394cbe29059582e0d9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReplayLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803077617774270579, guid: f5b638175f9ca394cbe29059582e0d9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WinScreenManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6786027523499903653, guid: f5b638175f9ca394cbe29059582e0d9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4888538145325948203}
+    - target: {fileID: 6786027523499903653, guid: f5b638175f9ca394cbe29059582e0d9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadNextLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6786027523499903653, guid: f5b638175f9ca394cbe29059582e0d9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WinScreenManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7310899016601541024, guid: f5b638175f9ca394cbe29059582e0d9f, type: 3}
       propertyPath: m_Name
       value: WinScreen
@@ -206,6 +242,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b638175f9ca394cbe29059582e0d9f, type: 3}
+--- !u!114 &4888538145325948203 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -4267413346908789968, guid: f5b638175f9ca394cbe29059582e0d9f, type: 3}
+  m_PrefabInstance: {fileID: 509058083895655963}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7150288a4ea99849b06e5211621fbda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7557734723318582333 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8066789233264570918, guid: f5b638175f9ca394cbe29059582e0d9f, type: 3}
@@ -224,8 +271,16 @@ PrefabInstance:
       value: 'X: 0.00'
       objectReference: {fileID: 0}
     - target: {fileID: 1332950189470405135, guid: af54f13ec6e7d2c42a79342aef248a25, type: 3}
+      propertyPath: m_fontSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1332950189470405135, guid: af54f13ec6e7d2c42a79342aef248a25, type: 3}
       propertyPath: m_fontStyle
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1332950189470405135, guid: af54f13ec6e7d2c42a79342aef248a25, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1332950189470405135, guid: af54f13ec6e7d2c42a79342aef248a25, type: 3}
       propertyPath: m_HorizontalAlignment
