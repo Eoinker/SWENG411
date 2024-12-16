@@ -938,6 +938,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: toggleZoom
       objectReference: {fileID: 0}
+    - target: {fileID: 6141374436700172420, guid: bfe266c4b3e074648a7cf6b681ab2e75, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1342117089}
+    - target: {fileID: 6141374436700172420, guid: bfe266c4b3e074648a7cf6b681ab2e75, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 7493314938502603560, guid: bfe266c4b3e074648a7cf6b681ab2e75, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1050,6 +1058,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7090088903346857915, guid: bfe266c4b3e074648a7cf6b681ab2e75, type: 3}
   m_PrefabInstance: {fileID: 1342117085}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1342117089 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2046802102299883031, guid: bfe266c4b3e074648a7cf6b681ab2e75, type: 3}
+  m_PrefabInstance: {fileID: 1342117085}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b3bd70284cb2244b774073702fbe21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1360203963
 GameObject:
   m_ObjectHideFlags: 0
