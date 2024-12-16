@@ -17,10 +17,13 @@ public class WinScreenManager : MonoBehaviour
     if (Application.CanStreamedLevelBeLoaded(nextSceneName))
     {
         SceneManager.LoadScene(nextSceneName);
+        Time.timeScale = 1f;
     }
     else
     {
         Debug.LogWarning("Next level does not exist.");
+        LoadMainMenu();
+        Time.timeScale = 1f;
     }
 }
 

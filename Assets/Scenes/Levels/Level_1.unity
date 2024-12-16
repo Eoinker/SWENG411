@@ -595,6 +595,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e35e81bc1e0694a96b84e86080e63d, type: 3}
+--- !u!114 &844462361 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8055994308092182868, guid: 86e35e81bc1e0694a96b84e86080e63d, type: 3}
+  m_PrefabInstance: {fileID: 844462360}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14291a6b143e9074e81e4db6e2c546d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1069730852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -603,9 +614,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 200614164452435614, guid: bfe266c4b3e074648a7cf6b681ab2e75, type: 3}
+      propertyPath: m_text
+      value: "You can use the \"move right\"\ncommand to move right, try \nit out!\nEnter
+        text..."
+      objectReference: {fileID: 0}
     - target: {fileID: 1957018054025487717, guid: bfe266c4b3e074648a7cf6b681ab2e75, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036828225104356062, guid: bfe266c4b3e074648a7cf6b681ab2e75, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 844462361}
+    - target: {fileID: 2036828225104356062, guid: bfe266c4b3e074648a7cf6b681ab2e75, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: toggleZoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 6141374436700172420, guid: bfe266c4b3e074648a7cf6b681ab2e75, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1069730853}
+    - target: {fileID: 6141374436700172420, guid: bfe266c4b3e074648a7cf6b681ab2e75, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 7493314938502603560, guid: bfe266c4b3e074648a7cf6b681ab2e75, type: 3}
       propertyPath: m_Pivot.x
@@ -692,6 +724,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfe266c4b3e074648a7cf6b681ab2e75, type: 3}
+--- !u!114 &1069730853 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2046802102299883031, guid: bfe266c4b3e074648a7cf6b681ab2e75, type: 3}
+  m_PrefabInstance: {fileID: 1069730852}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b3bd70284cb2244b774073702fbe21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1097356618
 PrefabInstance:
   m_ObjectHideFlags: 0
