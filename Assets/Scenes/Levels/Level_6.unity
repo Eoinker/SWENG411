@@ -1665,7 +1665,8 @@ PrefabInstance:
     - target: {fileID: 200614164452435614, guid: bfe266c4b3e074648a7cf6b681ab2e75, type: 3}
       propertyPath: m_text
       value: "Remember you can switch the \ncharacter's movement by using \nmove
-        right or left\nEnter text..."
+        right or left\nAlso a for loop would be helpful\non this level. Try:\nfor
+        3 //3 is the number of loops\n//code\nend\nEnter text..."
       objectReference: {fileID: 0}
     - target: {fileID: 1957018054025487717, guid: bfe266c4b3e074648a7cf6b681ab2e75, type: 3}
       propertyPath: m_Name
